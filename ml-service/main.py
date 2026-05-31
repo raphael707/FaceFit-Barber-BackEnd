@@ -35,7 +35,6 @@ def preprocess_image(image_bytes):
     image = image.resize((224, 224))
 
     img_array = np.array(image).astype("float32")
-    img_array = img_array / 255.0
     img_array = np.expand_dims(img_array, axis=0)
 
     return img_array
@@ -46,7 +45,14 @@ async def predict(file: UploadFile = File(...)):
         image_bytes = await file.read()
 
         input_data = preprocess_image(image_bytes)
+
+        print("Input shape:", input_data.shape)
+        print("Input min:", input_data.min())
+        print("Input max:", input_data.max())
+
         prediction = model.predict(input_data)
+
+        print("Raw prediction:", prediction[0])
 
         predicted_index = int(np.argmax(prediction[0]))
         confidence = float(np.max(prediction[0]))
