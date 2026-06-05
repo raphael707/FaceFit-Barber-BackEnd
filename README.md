@@ -2,6 +2,8 @@
 
 "FaceFit Barber BackEnd" is the backend service for the FaceFit Barber capstone project. This backend is designed to process user face images, analyze face shape using an AI model, and return personalized hairstyle recommendations based on the detected face shape.
 
+![logoApp](./assets/LogoApp.png)
+
 The backend consists of two main parts: an **Express.js API** for local backend routing and a **FastAPI ML Service** for running the TensorFlow/Keras face shape classification model. The AI service is also deployed using **Hugging Face Spaces** so it can be accessed online by the frontend application.
 
 ## Main Features
